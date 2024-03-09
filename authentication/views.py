@@ -1,8 +1,11 @@
-from django.contrib.auth import login, authenticate  # import des fonctions login et authenticate
-from django.shortcuts import render
+from django.contrib.auth import login, logout, authenticate  # import des fonctions login et authenticate
+from django.shortcuts import render, redirect
 
 from . import forms
 
+def logout_user(request):
+    logout(request)
+    return redirect('login')
 def login_page(request):
     form = forms.LoginForm()
     message = ''
